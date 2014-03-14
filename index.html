@@ -1,0 +1,161 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Web App">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="initial-scale=1">
+        
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/mine.css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/idangerous.swiper.css" />
+        <style>html { -webkit-text-size-adjust: 100%; }</style>
+        <title>Multi Conversor</title>
+
+        <!-- Icons -->
+
+        <link href="http://www.lorempixel.com/152/152/"
+              sizes="152x152"
+              rel="apple-touch-icon">
+        <link href="http://www.lorempixel.com/144/144/"
+              sizes="144x144"
+              rel="apple-touch-icon">
+        <link href="http://www.lorempixel.com/120/120/"
+              sizes="120x120"
+              rel="apple-touch-icon">
+        <link href="http://www.lorempixel.com/114/114/"
+              sizes="114x114"
+              rel="apple-touch-icon">
+        <link href="http://www.lorempixel.com/76/76/"
+              sizes="76x76"
+              rel="apple-touch-icon">
+        <link href="http://www.lorempixel.com/72/72/"
+              sizes="72x72"
+              rel="apple-touch-icon">
+        <link href="http://www.lorempixel.com/57/57/"
+              sizes="57x57"
+              rel="apple-touch-icon">
+
+        <!-- Startup images -->
+
+        <link href="http://www.lorempixel.com/1536/2008/"
+              media="(device-width: 768px) and (device-height: 1024px)
+                 and (orientation: portrait)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+        <link href="http://www.lorempixel.com/1496/2048/"
+              media="(device-width: 768px) and (device-height: 1024px)
+                 and (orientation: landscape)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+        <link href="http://www.lorempixel.com/768/1004/"
+              media="(device-width: 768px) and (device-height: 1024px)
+                 and (orientation: portrait)
+                 and (-webkit-device-pixel-ratio: 1)"
+              rel="apple-touch-startup-image">
+        <link href="http://www.lorempixel.com/748/1024/"
+              media="(device-width: 768px) and (device-height: 1024px)
+                 and (orientation: landscape)
+                 and (-webkit-device-pixel-ratio: 1)"
+              rel="apple-touch-startup-image">
+        <link href="http://www.lorempixel.com/640/1096/"
+              media="(device-width: 320px) and (device-height: 568px)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+        <link href="http://www.lorempixel.com/640/920/"
+              media="(device-width: 320px) and (device-height: 480px)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+        <link href="http://www.lorempixel.com/320/460/"
+              media="(device-width: 320px) and (device-height: 480px)
+                 and (-webkit-device-pixel-ratio: 1)"
+              rel="apple-touch-startup-image">
+    </head>
+
+    <body>
+        <div class="swiper-container swiper-parent">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="swiper-container swiper-nested-1">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide green-slide">
+                                <h2>Kg 2 Pounds</h2>
+                                <input id="kg-g" type="number" placeholder="Kilos" />
+                                <span>Are</span>
+                                <input id="pounds-g" type="number" placeholder="Pounds" disabled />                                
+                            </div>
+                            <div class="swiper-slide blue-slide">
+                                <h2>Pounds 2 Kg</h2>
+                                <input id="pounds-b" type="number" placeholder="Pounds" />
+                                <span>Are</span>
+                                <input id="kg-b" type="number" placeholder="Kilos" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-container swiper-nested-2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide red-slide">
+                                <h2>Meters 2 Feet</h2>
+                                <input id="meters-r" type="number" placeholder="Meters" />
+                                <span>Are</span>
+                                <input id="feet-r" type="number" placeholder="Feet" disabled />
+                            </div>
+                            <div class="swiper-slide orange-slide">
+                                <h2>Feet 2 Meters</h2>
+                                <input id="feet-o" type="number" placeholder="Feet" />
+                                <span>Are</span>
+                                <input id="meters-o" type="number" placeholder="Meters" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="js/jquery-1.10.1.min.js"></script>
+        <script src="js/idangerous.swiper-2.0.min.js"></script>              
+        <script>
+            var swiperParent = new Swiper('.swiper-parent',{
+                slidesPerView: 1
+            });
+            
+            var swiperNested1 = new Swiper('.swiper-nested-1',{
+                mode: 'vertical',
+                slidesPerView: 1
+            });
+            
+            var swiperNested2 = new Swiper('.swiper-nested-2',{
+                mode: 'vertical',
+                slidesPerView: 1
+            });
+  
+            $( document ).ready(function() {
+                $('#kg-g').keyup(function(event){
+                    var eKilos = $(this).val();
+                    $('#pounds-g').attr('placeholder', (eKilos*2.20462) + ' pounds');
+                });
+                
+                 $('#pounds-b').keyup(function(event){
+                    var ePounds = $(this).val();
+                    $('#kg-b').attr('placeholder', (ePounds*0.45359) + ' Kilos');
+                });
+                
+                $('#meters-r').keyup(function(event){
+                    var eMeters = $(this).val();
+                    $('#feet-r').attr('placeholder', (eMeters*3.2808) + ' Feets');
+                });
+                
+                 $('#feet-o').keyup(function(event){
+                    var eFeet = $(this).val();
+                    $('#meters-o').attr('placeholder', (eFeet*0.3048) + ' Meters');
+                });
+            });
+         
+        </script>
+    </body>
+</html>
